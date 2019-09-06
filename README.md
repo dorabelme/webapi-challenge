@@ -26,13 +26,39 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+- Writing handlers for requests with different URL paths and HTTP - CRUD operations. 
+    server.get(“/”, (req, res) => {})
+- Adding additional "middleware" at any point within the request handling pipeline.
+- Using Routing → const router = express.Router();
+
 - [ ] Describe Middleware?
+
+Middleware functions have access to the request object (req), and the response object (res), and the next middleware function in the application’s req-res cycle (next()).
+Middleware functions can:
+- Make changes to the req and res objects
+- Execute code
+- End the req-res cycle
+- Call the next middleware in the stack
 
 - [ ] Describe a Resource?
 
+When using a RESTful Web API everything is a resource. Each resource is accessible via a unique URL. Resources can have multiple representations and the management of them is done via HTTP methods.
+ 
+Resources could be products, users, suppliers, stores, projects, todos.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+HTTP Status Codes
+200: OK
+201: Created
+204: No Content with delete
+404: Not Found
+500: Internal Server Error
+
 - [ ] How can we partition our application into sub-applications?
+
+Routing comes with Express. Using routing enables us to map incoming requests to the appropriate request handler based on the URL and HTTP method used. We can have a specific URL per resource and can execute different code based on the HTTP method used.
+
 
 ## Project Setup
 
