@@ -15,8 +15,10 @@ Go code!
 
 const express = require("express");
 const server = express();
+const cors = require('cors');
 
 server.use(express.json());
+server.use(cors());
 
 
 const projectsRouter = require('./projects/projectsRouter.js');
