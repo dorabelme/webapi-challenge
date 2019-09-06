@@ -18,4 +18,11 @@ const server = express();
 
 server.use(express.json());
 
-server.listen(8000, () => console.log("Server listening on port 8000."));
+
+const projectsRouter = require('./projects/projectsRouter.js');
+const actionsRouter = require('./actions/actionsRouter.js');
+
+server.use('/api/projects', projectsRouter);
+server.use('/api/actions', actionsRouter);
+
+server.listen(8000, () => console.log("Server listening on 8000."))
