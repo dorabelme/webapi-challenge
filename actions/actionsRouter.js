@@ -13,4 +13,39 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    getAction(id, res);
+
+    // actionDb.get(id)
+    //     .then(action => {
+    //         console.log(action);
+    //         if (action) {
+    //             res.status(200).json(action);
+    //         } else {
+    //             res.status(404).json({ error: "Action with ID does not exist." });
+    //         }
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //         res.status(500).json({ error: "Error getting the action from the database", id: id });
+    //     });
+});
+
+function getAction(id, res) {
+    return actionDb.get(id)
+        .then((action) => {
+            console.log(action);
+            if (action) {
+                res.status(200).json(action);
+            } else {
+                res.status(404).json({ error: "Action with ID does not exist." });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: "Error getting the action from the database." });
+        });
+}
+
 module.exports = router;
