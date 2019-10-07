@@ -12,3 +12,19 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+
+const express = require("express");
+const server = express();
+const cors = require('cors');
+
+server.use(express.json());
+server.use(cors());
+
+
+const projectsRouter = require('./projects/projectsRouter.js');
+const actionsRouter = require('./actions/actionsRouter.js');
+
+server.use('/api/projects', projectsRouter);
+server.use('/api/actions', actionsRouter);
+
+server.listen(8000, () => console.log("Server listening on 8000."))
